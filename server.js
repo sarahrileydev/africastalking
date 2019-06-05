@@ -40,7 +40,7 @@ app.post("*", (req, res) => {
     default:
       response = "Bad request!";
   }
-  return response;
+  res.send(response);
 });
 
 // app.post('*', (req, res) => {
