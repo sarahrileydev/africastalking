@@ -1,22 +1,24 @@
-const app = require('express')()
-const bodyParser = require('body-parser')
-const logger = require('morgan')
+const app = require("express")();
+const bodyParser = require("body-parser");
+const logger = require("morgan");
 
-const port = process.env.PORT || 3030
+const port = process.env.PORT || 3030;
 
-app.use(logger('dev'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('*', (req, res) => {
-  res.send('This is tutorial App on creating your first USSD app in 5 minutes or less by Ajala Abdulsamii <kgasta@gmail.com>')
-})
-
+app.get("*", (req, res) => {
+  res.send(
+    "This is tutorial App on creating your first USSD app in 5 minutes or less by Ajala Abdulsamii <kgasta@gmail.com>"
+  );
+});
 
 app.post("*", (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
   let accountNumber = "ACC1001";
   let balance = "NGN 10,000";
+  let response = "";
   switch (text) {
     case "":
       response =
@@ -36,8 +38,9 @@ app.post("*", (req, res) => {
       response = `END Your balance is ${balance}`;
       break;
     default:
-      text = "Bad request!";
+      response = "Bad request!";
   }
+  return response;
 });
 
 // app.post('*', (req, res) => {
@@ -76,5 +79,5 @@ app.post("*", (req, res) => {
 // })
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
-})
+  console.log(`Server running on port ${port}`);
+});
