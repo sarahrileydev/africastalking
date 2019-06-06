@@ -17,31 +17,63 @@ app.get("*", (req, res) => {
 app.post("*", (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
   let accountNumber = "ACC1001";
-  let balance = "NGN 10,000";
+  let prices = "NGN 10,000";
   let response = "";
   switch (text) {
     case "":
       response =
-        "CON What would you want to check \n 1. My Account \n 2. My phone number";
+        "CON Choose your country \n 1. BDI \n 2. DRC \n 3. KEN \n 4. MWI \n 5. RWA \n 6. SSD \n 7. TZA \n 8. UGA";
       break;
     case "1":
       response =
-        "CON Choose account information you want to view \n 1. Account number \n 2. Account balance";
-      break;
-    case "2":
-      response = `END Your phone number is \n ${phoneNumber}`;
+        "CON Choose your marketplace \n 1. Bujumbura \n 2. Gitega \n 3. Ngozi";
       break;
     case "1*1":
-      response = `END Your account number is \n ${accountNumber}`;
+      response = "CON Choose your commodity \n 1. Animal Products \n 2. Beans \n 3. Cereals";
       break;
-    case "1*2":
-      response = `END Your balance is \n ${balance}`;
+    case "1*1*1":
+      response = "CON Choose your sub-category \n 1. Animal Products \n 2. Livestock \n 3. Poultry";
+      break;
+    case "1*1*1*1":
+      response = "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
+      break;
+    case "1*1*1*1*1":
+      response = `END Current prices for \n Eggs ${prices}`;
       break;
     default:
       response = "Bad request!";
   }
   res.send(response);
 });
+
+// app.post("*", (req, res) => {
+//   let { sessionId, serviceCode, phoneNumber, text } = req.body;
+//   let accountNumber = "ACC1001";
+//   let balance = "NGN 10,000";
+//   let response = "";
+//   switch (text) {
+//     case "":
+//       response =
+//         "CON What would you want to check \n 1. My Account \n 2. My phone number";
+//       break;
+//     case "1":
+//       response =
+//         "CON Choose account information you want to view \n 1. Account number \n 2. Account balance";
+//       break;
+//     case "2":
+//       response = `END Your phone number is \n ${phoneNumber}`;
+//       break;
+//     case "1*1":
+//       response = `END Your account number is \n ${accountNumber}`;
+//       break;
+//     case "1*2":
+//       response = `END Your balance is \n ${balance}`;
+//       break;
+//     default:
+//       response = "Bad request!";
+//   }
+//   res.send(response);
+// });
 
 // app.post('*', (req, res) => {
 //   let {sessionId, serviceCode, phoneNumber, text} = req.body
