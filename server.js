@@ -22,20 +22,20 @@ app.post("*", (req, res) => {
   switch (text) {
     case "":
       response =
-        "CON What would you want to check 1. My Account 2. My phone number";
+        "CON What would you want to check \n 1. My Account 2. \n My phone number";
       break;
     case "1":
       response =
-        "CON Choose account information you want to view 1. Account number 2. Account balance";
+        "CON Choose account information you want to view \n 1. Account number \n 2. Account balance";
       break;
     case "2":
-      response = `END Your phone number is ${phoneNumber}`;
+      response = `END Your phone number is \n ${phoneNumber}`;
       break;
     case "1*1":
-      response = `END Your account number is ${accountNumber}`;
+      response = `END Your account number is \n ${accountNumber}`;
       break;
     case "1*2":
-      response = `END Your balance is ${balance}`;
+      response = `END Your balance is \n ${balance}`;
       break;
     default:
       response = "Bad request!";
