@@ -22,7 +22,7 @@ app.post("*", (req, res) => {
   switch (text) {
     case "":
       response =
-        "CON What would you want to check \n 1. My Account 2. \n My phone number";
+        "CON What would you want to check \n 1. My Account \n 2. My phone number";
       break;
     case "1":
       response =
