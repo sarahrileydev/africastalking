@@ -33,8 +33,14 @@ router.post("*", async (req, res) => {
   WHERE country = 'BTI' AND market = 'Bujumbaru' AND product = 'eggs';`;
       try {
         const results = await db.raw(sql);
-     
-        response = `END Current prices for \n Eggs ${Object.keys(results).forEach(item => results[item])}`;
+        let newPrice = [];
+        results.forEach(function(cake) {
+          newPrice.push(cake.price);
+        });
+
+        newPrice.toString();
+
+        response = `END Current prices for \n Eggs ${newPrice}`;
       } catch (error) {
         console.log(error);
         // do stuff with error
