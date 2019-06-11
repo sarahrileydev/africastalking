@@ -51,7 +51,7 @@ app.post("*", async (req, res) => {
         try {
           const results = await db.raw(sql);
         console.log(results);
-          response = results.rows[0].price
+          response = results[0].price
         } catch (error) {
           console.log(error);
           // do stuff with error
