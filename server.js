@@ -1,7 +1,7 @@
 const app = require("express")();
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const db = require("../data/dbConfig");
+const db = require("./data/dbConfig");
 
 const port = process.env.PORT || 3030;
 
@@ -19,7 +19,7 @@ function get() {
   return db("products")
 }
 
-app.post("*", (req, res) => {
+app.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
   let accountNumber = "ACC1001";
   let prices = "NGN 10,000";
