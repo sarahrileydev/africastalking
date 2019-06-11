@@ -6,19 +6,19 @@ exports.up = function(knex, Promise) {
     tbl
     .string('country', 128) 
     .notNullable()
-    .unique()
+
     tbl
     .string('market', 128) 
     .notNullable()
-    .unique()
+    
     tbl
     .string('product', 128) 
     .notNullable()
-    .unique()
+ 
     tbl
     .string('price', 128) 
     .notNullable()
-    .unique()
+   
   })
 };
 

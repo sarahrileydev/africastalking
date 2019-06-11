@@ -30,11 +30,11 @@ router.post("*", async (req, res) => {
         SELECT price
 
   FROM products
-  WHERE country = 'BTI' AND market = 'Bujumbaru' AND product = 'beans';`;
+  WHERE country = 'BTI' AND market = 'Bujumbaru' AND product = 'eggs';`;
       try {
         const results = await db.raw(sql);
      
-        response = `END Current prices for \n Eggs ${results[0].price}`;
+        response = `END Current prices for \n Eggs ${results.forEach(result => result.price)}`;
       } catch (error) {
         console.log(error);
         // do stuff with error
