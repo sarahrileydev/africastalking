@@ -1,7 +1,7 @@
 const app = require("express")();
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const db = require("./data/dbConfig");
+
 
 const router = require('./router');
 

@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const db = require("./data/dbConfig");
 
 router.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
