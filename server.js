@@ -10,7 +10,7 @@ const port = process.env.PORT || 3030;
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-server.use('*', router);
+app.use('*', router);
 
 app.get("*", (req, res) => {
   res.send(
