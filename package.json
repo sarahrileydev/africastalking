@@ -4,6 +4,7 @@
   "main": "server.js",
   "description": "A sample USSD server tutorial with AfricasTaslking.com service",
   "scripts": {
+    "server": "nodemon server.js",
     "start": "node server.js"
   },
   "keywords": [
