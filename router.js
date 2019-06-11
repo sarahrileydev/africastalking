@@ -34,7 +34,7 @@ router.post("*", async (req, res) => {
       try {
         const results = await db.raw(sql);
      
-        response = `END Current prices for \n Eggs ${Object.keys(results).forEach(item => results[item.price])}`;
+        response = `END Current prices for \n Eggs ${Object.keys(results).forEach(item => results[item])}`;
       } catch (error) {
         console.log(error);
         // do stuff with error
