@@ -16,7 +16,7 @@ app.get("*", (req, res) => {
 });
 
 function get() {
-  return db("products")
+  return db("products");
 }
 
 app.post("*", async (req, res) => {
@@ -34,28 +34,33 @@ app.post("*", async (req, res) => {
         "CON Choose your marketplace \n 1. Bujumbura \n 2. Gitega \n 3. Ngozi";
       break;
     case "1*1":
-      response = "CON Choose your commodity \n 1. Animal Products \n 2. Beans \n 3. Cereals";
+      response =
+        "CON Choose your commodity \n 1. Animal Products \n 2. Beans \n 3. Cereals";
       break;
     case "1*1*1":
-      response = "CON Choose your sub-category \n 1. Animal Products \n 2. Livestock \n 3. Poultry";
+      response =
+        "CON Choose your sub-category \n 1. Animal Products \n 2. Livestock \n 3. Poultry";
       break;
     case "1*1*1*1":
-      response = "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
+      response =
+        "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
       break;
     case "1*1*1*1*1":
-        let sql = `
+      let sql = `
         SELECT price
 
   FROM products
   WHERE country = 'BTI' AND market = 'Bujumbaru' AND product = 'beans';`;
-        try {
-          const results = await db.raw(sql);
+      try {
+        const results = await db.raw(sql);
         console.log(results);
-          response = results[0].price
-        } catch (error) {
-          console.log(error);
-          // do stuff with error
-        }
+        console.log(results[0].price);
+        console.log(typeof results[0].price);
+        response = `END Current prices for \n Eggs ${results[0].price}`;
+      } catch (error) {
+        console.log(error);
+        // do stuff with error
+      }
       // response = `END Current prices for \n Eggs ${prices}`;
       break;
     default:
