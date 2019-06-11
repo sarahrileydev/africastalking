@@ -1,6 +1,7 @@
 const app = require("express")();
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const db = require("../data/dbConfig");
 
 const port = process.env.PORT || 3030;
 
@@ -14,6 +15,10 @@ app.get("*", (req, res) => {
   );
 });
 
+function get() {
+  return db("products")
+}
+
 app.post("*", (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
   let accountNumber = "ACC1001";
@@ -22,7 +27,7 @@ app.post("*", (req, res) => {
   switch (text) {
     case "":
       response =
-        "CON Choose your country \n 1. BDI \n 2. DRC \n 3. KEN \n 4. MWI \n 5. RWA \n 6. SSD \n 7. TZA \n 8. UGA";
+        "CON Choose your country \n 1. BTI \n 2. DRC \n 3. KEN \n 4. MWI \n 5. RWA \n 6. SSD \n 7. TZA \n 8. UGA";
       break;
     case "1":
       response =
@@ -38,7 +43,20 @@ app.post("*", (req, res) => {
       response = "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
       break;
     case "1*1*1*1*1":
-      response = `END Current prices for \n Eggs ${prices}`;
+        let sql = `
+        SELECT price
+
+  FROM products
+  WHERE country = 'BTI' AND market = 'Bujumbaru' AND product = 'beans';`;
+        try {
+          const results = await db.raw(sql);
+        console.log(results);
+          response = results.rows
+        } catch (error) {
+          console.log(error);
+          // do stuff with error
+        }
+      // response = `END Current prices for \n Eggs ${prices}`;
       break;
     default:
       response = "Bad request!";
