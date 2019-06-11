@@ -1,5 +1,5 @@
 const app = require("express")();
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const logger = require("morgan");
 
 
@@ -8,8 +8,8 @@ const router = require('./router');
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('*', router);
 
 app.get("*", (req, res) => {
