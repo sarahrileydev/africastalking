@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const db = require("./data/dbConfig");
+
 const models = require("./models");
 
 router.post("*", async (req, res) => {
@@ -16,17 +16,9 @@ router.post("*", async (req, res) => {
       break;
     case "1*1":
       response =
-        "CON Choose your commodity \n 1. Animal Products \n 2. Beans \n 3. Cereals";
-      break;
-    case "1*1*1":
-      response =
-        "CON Choose your sub-category \n 1. Animal Products \n 2. Livestock \n 3. Poultry";
-      break;
-    case "1*1*1*1":
-      response =
         "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
       break;
-    case "1*1*1*1*1":
+    case "1*1*1":
      
       try {
         const results = await models.findPrice("BTI", "Bujumbaru", "eggs");
@@ -43,7 +35,7 @@ router.post("*", async (req, res) => {
         console.log(error);
         // do stuff with error
       }
-      // response = `END Current prices for \n Eggs ${prices}`;
+      
       break;
     default:
       response = "Bad request!";
