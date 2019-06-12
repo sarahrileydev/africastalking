@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const db = require("./data/dbConfig");
+const models = require("./models");
 
 router.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
@@ -26,13 +27,10 @@ router.post("*", async (req, res) => {
         "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
       break;
     case "1*1*1*1*1":
-      let sql = `
-        SELECT price
-
-  FROM products
-  WHERE country = 'BTI' AND market = 'Bujumbaru' AND product = 'eggs';`;
+     
       try {
-        const results = await db.raw(sql);
+        const results = await db.findPrice("BTI", "Bujumbura", "eggs");
+        console.log(results)
         let newPrice = [];
         results.forEach(function(cake) {
           newPrice.push(cake.price);
