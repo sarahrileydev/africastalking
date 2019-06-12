@@ -29,7 +29,7 @@ router.post("*", async (req, res) => {
     case "1*1*1*1*1":
      
       try {
-        const results = await db.findPrice("BTI", "Bujumbura", "eggs");
+        const results = await models.findPrice("BTI", "Bujumbura", "eggs");
         console.log(results)
         let newPrice = [];
         results.forEach(function(cake) {
