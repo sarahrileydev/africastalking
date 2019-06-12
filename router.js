@@ -19,15 +19,12 @@ router.post("*", async (req, res) => {
         "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
       break;
     case "1*1*1":
-     
       try {
         const results = await models.findPrice("BTI", "Bujumbaru", "eggs");
-        console.log(results)
         let newPrice = [];
         results.forEach(function(cake) {
           newPrice.push(cake.price);
         });
-
         newPrice.toString();
 
         response = `END Current prices for \n Eggs ${newPrice}`;
@@ -35,7 +32,7 @@ router.post("*", async (req, res) => {
         console.log(error);
         // do stuff with error
       }
-      
+
       break;
     default:
       response = "Bad request!";
