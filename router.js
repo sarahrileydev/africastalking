@@ -5,6 +5,9 @@ const responses = require("./responses");
 
 router.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
+  let textArray = []
+  textArray.push(text)
+  console.log(textArray);
   console.log("body", req.body)
   console.log("text", text)
   let response = "";
@@ -39,6 +42,7 @@ router.post("*", async (req, res) => {
     default:
       response = "Bad request!";
   }
+
   res.send(response);
 });
 

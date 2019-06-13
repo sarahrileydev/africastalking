@@ -11,9 +11,9 @@ async function getProductsInMarket(market) {
 
     let response = "CON Choose your product";
 
-    products.forEach(function(item) {
+    products.forEach(function(index, item) {
       console.log(item.product)
-      response = response + item.product;
+      response = response + `${index + 1}` + item.product;
     });
     console.log("test", response)
     return response;
