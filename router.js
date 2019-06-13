@@ -5,7 +5,8 @@ const responses = require("./responses");
 
 router.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
-
+  console.log("body", req.body)
+  console.log("text", text)
   let response = "";
   switch (text) {
     case "":
