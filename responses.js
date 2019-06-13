@@ -10,7 +10,8 @@ async function getProductsInMarket(market) {
     console.log("products", products);
     let response = "CON Choose your product";
     products.forEach(function(item) {
-      response = response + "\n" + item.product;
+      console.log(item.product)
+      response = response + item.product;
     });
     return response;
   } catch (err) {

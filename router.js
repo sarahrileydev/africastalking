@@ -11,16 +11,14 @@ router.post("*", async (req, res) => {
     case "":
       response =
         "CON Choose your marketplace \n 1. Bujumbura \n 2. Gitega \n 3. Ngozi";
-        console.log("sessionId 1", sessionId)
-        console.log("serviceCode 1", serviceCode)
-        console.log("phone Number 1", phoneNumber)
+        // console.log("sessionId 1", sessionId)
+        // console.log("serviceCode 1", serviceCode)
+        // console.log("phone Number 1", phoneNumber)
       break;
     case "1":
       response =
         responses.getProductsInMarket("Bujumbaru")
-        console.log("sessionId 2", sessionId)
-        console.log("serviceCode 2", serviceCode)
-        console.log("phone Number 2", phoneNumber)
+      
       break;
     case "1*1":
       try {
@@ -32,9 +30,7 @@ router.post("*", async (req, res) => {
         newPrice.toString();
 
         response = `END Current prices for \n Eggs ${newPrice}`;
-        console.log("sessionId 3", sessionId)
-        console.log("serviceCode 3", serviceCode)
-        console.log("phone Number 3", phoneNumber)
+      
       } catch (error) {
         console.log(error);
         // do stuff with error
