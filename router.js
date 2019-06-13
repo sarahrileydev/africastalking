@@ -4,6 +4,7 @@ const models = require("./models");
 
 router.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
+  console.log(sessionId)
   let response = "";
   switch (text) {
     case "":
