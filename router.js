@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const models = require("./models");
+const responses = require("./responses");
 
 router.post("*", async (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text } = req.body;
@@ -16,7 +17,7 @@ router.post("*", async (req, res) => {
       break;
     case "1":
       response =
-        "CON Choose your product \n 1. Eggs \n 2. Exotic Eggs \n 3. Local Eggs";
+        responses.getProductsInMarket("Bujumbaru")
         console.log("sessionId 2", sessionId)
         console.log("serviceCode 2", serviceCode)
         console.log("phone Number 2", phoneNumber)
@@ -47,3 +48,6 @@ router.post("*", async (req, res) => {
 });
 
 module.exports = router;
+
+
+// $cellnum = preg_replace("/[^0-9]/","",$cellnum);
